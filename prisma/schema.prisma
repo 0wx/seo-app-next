@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Competitors {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  competitorName String
+  competitorWebsite String
+  report Report @relation(fields: [reportId], references: [id])
+  reportId String
+}
+
+model Keywords {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  keyword String
+  report Report @relation(fields: [reportId], references: [id])
+  reportId String
+}
+
+model Report {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  companyName String
+  companyWebsite String
+  competitors Competitors[]
+  keywords Keywords[]
+  data String?
+}
