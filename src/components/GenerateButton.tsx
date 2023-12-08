@@ -1,8 +1,10 @@
 import { useReportInput } from '@/hooks/useReportInput'
 import React, { FC } from 'react'
+import { useRouter } from 'next/router'
 
 const GenerateButton: FC = () => {
   const { reportInput } = useReportInput()
+  const router = useRouter()
 
   const generate = async () => {
     if(!reportInput.companyName) return alert('Please enter your company name')
@@ -15,7 +17,8 @@ const GenerateButton: FC = () => {
       body: JSON.stringify(reportInput),
     })
     const data = await res.json()
-    console.log(data)
+    router.push('/' + data.id)
+    
   }
 
 
