@@ -10,7 +10,6 @@ import { ReportInputData } from '@/libs/zod'
 import { Divider } from '@mui/material'
 import axios from 'axios'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { report } from 'process'
 import React, { useEffect } from 'react'
 
 export const getServerSideProps = (async (context) => {
