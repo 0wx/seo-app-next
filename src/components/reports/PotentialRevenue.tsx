@@ -34,7 +34,7 @@ const PotentialRevenue: FC<{ keywords: Keyword[] }> = ({ keywords }) => {
             <div className="text-xl font-bold">{avgKD}</div>
           </div>
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className="flex flex-col gap-2">
           <div>
             <div>CTR (%)</div>
             <div>
@@ -81,7 +81,7 @@ const PotentialRevenue: FC<{ keywords: Keyword[] }> = ({ keywords }) => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-2'>
+        <div className="flex flex-col gap-2">
           <div>
             <div>Closing Rate (%)</div>
             <div>
@@ -121,21 +121,37 @@ const PotentialRevenue: FC<{ keywords: Keyword[] }> = ({ keywords }) => {
                 onChange={(e) =>
                   setConfig({ ...config, arpu: Number(e.target.value) })
                 }
-                
               />
             </div>
           </div>
         </div>
-        <div>
-          <div>Potential Revenue</div>
-          <div className="text-xl font-bold">
-            
-            ${Math.floor(
-              (msv * config.ctr * config.conversionRate * config.closingRate * config.arpu) / 10000
-            ).toLocaleString()}
+        <div className="flex flex-col gap-4">
+          <div>
+            <div>Potential New User</div>
+            <div className="text-xl font-bold">
+              {Math.floor(
+                (msv *
+                  config.ctr *
+                  config.conversionRate *
+                  config.closingRate) /
+                  10000
+              ).toLocaleString()}
             </div>
-
-
+          </div>
+          <div>
+            <div>Potential Revenue</div>
+            <div className="text-xl font-bold">
+              $
+              {Math.floor(
+                (msv *
+                  config.ctr *
+                  config.conversionRate *
+                  config.closingRate *
+                  config.arpu) /
+                  10000
+              ).toLocaleString()}
+            </div>
+          </div>
         </div>
       </div>
       <Divider />
