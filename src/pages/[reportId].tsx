@@ -15,7 +15,7 @@ import React, { useEffect } from 'react'
 
 export const getServerSideProps = (async (context) => {
   const { data } = await axios.get<ReportInputData>(
-    'http://localhost:3000/api/reports/' + context.params?.reportId
+    'https://seo.devhaus.me/api/reports/' + context.params?.reportId
   )
   return { props: data }
 }) satisfies GetServerSideProps<ReportInputData>
