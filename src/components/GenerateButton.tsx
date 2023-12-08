@@ -15,7 +15,8 @@ const GenerateButton: FC = () => {
       return alert('Please enter your keywords')
     if (reportInput.competitors.length < 1)
       return alert('Please enter your competitors')
-
+    
+    setGenerated(true)
     const res = await fetch('/api/reports', {
       method: 'POST',
       body: JSON.stringify(reportInput),
@@ -29,7 +30,6 @@ const GenerateButton: FC = () => {
       className="bg-gradient-to-r from-blue-500 via-blue-400 to-red-500 text-white font-bold flex items-center gap-2 px-4 py-2 rounded-md mt-4 transition-all background-animate active:scale-95"
       onClick={() => {
         generate()
-        setGenerated(true)
       }}
     >
       Generate
