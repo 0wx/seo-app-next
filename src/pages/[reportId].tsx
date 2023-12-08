@@ -31,21 +31,27 @@ const Report = (
 
   return (
     <MainLayout>
-      <h1 className='text-4xl font-bold px-8 pt-8 pb-4'>SEO Report for {data.companyName}</h1>
+      <h1 className="text-4xl font-bold px-8 pt-8 pb-4">
+        SEO Report for {data.companyName}
+      </h1>
       <Divider />
-      <h2 className='text-2xl font-bold px-8 pt-8 pb-4'>Overview</h2>
+      <h2 className="text-2xl font-bold px-8 pt-8 pb-4">Overview</h2>
       <StackBars />
-      <h2 className='text-2xl font-bold px-8 pt-8 pb-4'>{data.companyName} - {data.companyWebsite}</h2>
+      <h2 className="text-2xl font-bold px-8 pt-8 pb-4">
+        {data.companyName} - {data.companyWebsite}
+      </h2>
       <CompanyKeywordReport />
-      {data.competitors.map((v) => (
-        <div>
-          <h2 className='text-2xl font-bold px-8 pt-8 pb-4'>{v.competitorName} - {v.competitorWebsite}</h2>
-        <CompetitorKeywordReport
-          key={v.id}
-          competitorName={v.competitorName}
-          competitorWebsite={v.competitorWebsite}
+      {data.competitors.map((v, i) => (
+        <div key={i}>
+          <h2 className="text-2xl font-bold px-8 pt-8 pb-4">
+            {v.competitorName} - {v.competitorWebsite}
+          </h2>
+          <CompetitorKeywordReport
+            key={v.id}
+            competitorName={v.competitorName}
+            competitorWebsite={v.competitorWebsite}
           />
-          </div>
+        </div>
       ))}
       <Divider />
       <MissingKeywords />
